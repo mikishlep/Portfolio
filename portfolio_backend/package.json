@@ -7,14 +7,21 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.ts"
+    "dev": "tsx src/docs/swagger.ts && tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "swagger": "tsx swagger.ts"
   },
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^26.2.0",
+    "@types/swagger-ui-express": "^4.1.8",
+    "concurrently": "^10.0.5",
+    "tsx": "^4.23.12",
     "typescript": "^7.0.2"
   }
 }
