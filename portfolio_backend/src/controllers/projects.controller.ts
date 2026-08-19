@@ -19,7 +19,7 @@ export const getProjectById = (req: Request, res: Response) => {
     }
 }
 
-export const makeProject = (req: Request, res: Response) => {
+export const createProject = (req: Request, res: Response) => {
     const { name, description } = req.body;
 
     if (!name || !description) {
