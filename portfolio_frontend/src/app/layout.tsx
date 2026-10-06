@@ -3,6 +3,8 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import ClickSpark from "@/components/ui/ClickSpark";
+import { LanguageProvider } from "@/components/i18n/LanguageProvider";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
@@ -18,10 +20,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "mikishlep — Frontend / Fullstack developer",
-    template: "%s — mikishlep",
+    default: "SIDEBYTE — web development team",
+    template: "%s — SIDEBYTE",
   },
-  description: "Портфолио frontend / fullstack разработчика: сайты, интерфейсы и веб-приложения.",
+  description: "Портфолио команды SIDEBYTE: сайты, интерфейсы, веб-приложения и цифровые сервисы.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -38,7 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             sparkCount={8}
             duration={400}
         >
-          {children}
+          <LanguageProvider><SmoothScroll>{children}</SmoothScroll></LanguageProvider>
         </ClickSpark>
       </body>
     </html>

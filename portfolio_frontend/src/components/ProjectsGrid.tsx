@@ -4,15 +4,20 @@ import { motion } from 'motion/react'
 import { ArrowUpRight } from 'lucide-react'
 import Link from 'next/link'
 import { projects } from '@/lib/projects'
+import { useLanguage } from '@/components/i18n/LanguageProvider'
 
 export default function ProjectsGrid() {
+  const { language } = useLanguage()
+
   return (
     <div className="mx-auto grid max-w-335 grid-cols-1 border-x border-border md:grid-cols-2">
       {projects.map((project, index) => (
         <motion.div
-          key={project.url}
+          key={project.slug}
           className={`group block border-b border-border ${
-            index % 2 === 0 ? 'md:border-r' : ''
+            index === projects.length - 1 && projects.length % 2 !== 0
+              ? 'md:col-span-2'
+              : index % 2 === 0 ? 'md:border-r' : ''
           }`}
           initial="rest"
           whileHover="hover"
@@ -33,14 +38,13 @@ export default function ProjectsGrid() {
               variants={{ rest: { x: 0, y: 0 }, hover: { x: -10, y: -10 } }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
             />
-
             <div className="relative z-10 flex min-h-56 flex-col justify-between sm:min-h-64">
               <div className="flex items-start justify-between text-xs uppercase tracking-[0.16em]">
                 <span>{project.index}</span>
-                <span>{project.subtitle}</span>
+                <span>{language === 'ru' ? project.subtitle : project.en.subtitle}</span>
               </div>
               <h3 className="max-w-[85%] text-4xl leading-[0.95] font-medium tracking-tight sm:text-6xl">
-                {project.title}
+                {language === 'ru' ? project.title : project.en.title}
               </h3>
             </div>
           </div>
@@ -58,7 +62,7 @@ export default function ProjectsGrid() {
                 ))}
               </div>
               <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
-                {project.description}
+                {language === 'ru' ? project.description : project.en.description}
               </p>
               <p className="mt-3 text-sm">{project.displayUrl}</p>
             </div>

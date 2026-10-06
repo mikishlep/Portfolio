@@ -111,3 +111,17 @@
     color: var(--background);
   }
 }
+
+@keyframes tech-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.tech-marquee {
+  animation: tech-marquee 24s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .tech-marquee { animation-play-state: paused; }
+}

@@ -14,7 +14,7 @@ export default function TitleSeparator({ name, textContent }: TitleSeparatorProp
             animate="rest"
             whileHover="hover"
             className="
-                relative mx-auto flex max-w-335 items-center justify-between
+                relative mx-auto flex w-full max-w-335 items-center justify-between
                 overflow-hidden border-x border-b border-border px-6 py-4 sm:px-10 lg:px-18
             "
         >
