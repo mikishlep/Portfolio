@@ -1,20 +1,21 @@
 import { motion } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
-import { useRouter } from "next/navigation";
 
-export default function TitleSeparator({ name, textContent, routerName }: SeparatorProps) {
+interface TitleSeparatorProps {
+    name: string;
+    textContent: string;
+}
+
+export default function TitleSeparator({ name, textContent }: TitleSeparatorProps) {
     const upperCaseName = name.toUpperCase();
-    const router = useRouter();
 
     return (
         <motion.div
-            onClick={() => router.push(`/${routerName}`)}
             initial="rest"
             animate="rest"
             whileHover="hover"
             className="
                 relative mx-auto flex max-w-335 items-center justify-between
-                overflow-hidden border-x border-b border-border px-18 py-4 cursor-pointer
+                overflow-hidden border-x border-b border-border px-6 py-4 sm:px-10 lg:px-18
             "
         >
             <motion.div
@@ -50,8 +51,8 @@ export default function TitleSeparator({ name, textContent, routerName }: Separa
             >
                 {upperCaseName}
             </motion.h2>
-            <motion.div
-                className="relative z-10 flex gap-4 items-center"
+            <motion.p
+                className="relative z-10 text-sm"
                 variants={{
                     rest: {
                         color: "var(--foreground)",
@@ -70,9 +71,8 @@ export default function TitleSeparator({ name, textContent, routerName }: Separa
                     damping: 22,
                 }}
             >
-                <p>{textContent}</p>
-                <ArrowUpRight size={20} strokeWidth={1.5} />
-            </motion.div>
+                {textContent}
+            </motion.p>
         </motion.div>
     );
 }
