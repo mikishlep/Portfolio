@@ -1,12 +1,12 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, ArrowUpRight } from 'lucide-react'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 import { useLanguage } from '@/components/i18n/LanguageProvider'
 import type { PortfolioProject } from '@/lib/projects'
+import ProjectVisualStory from '@/components/ProjectVisualStory'
 
 export default function ProjectCase({ project, nextProject }: { project: PortfolioProject; nextProject: PortfolioProject }) {
   const { language } = useLanguage()
@@ -56,7 +56,7 @@ export default function ProjectCase({ project, nextProject }: { project: Portfol
               <Meta label={labels.website} value={project.displayUrl} />
             </dl>
             {project.url && (
-              <a href={project.url} target="_blank" rel="noreferrer" className="mt-12 inline-flex items-center gap-3 border-b border-foreground pb-1">
+              <a href={project.url} target="_blank" rel="noreferrer" className="mt-12 inline-flex items-center gap-3 border border-foreground px-5 py-3 text-sm transition-colors hover:bg-foreground hover:text-background">
                 {labels.open} <ArrowUpRight size={18} />
               </a>
             )}
@@ -68,15 +68,7 @@ export default function ProjectCase({ project, nextProject }: { project: Portfol
           </article>
         </section>
 
-        <section className="mx-auto max-w-335 border-x border-b border-border p-4 sm:p-8 lg:p-14">
-          <div className="relative aspect-[16/9] overflow-hidden border border-foreground/10 bg-muted">
-            {project.image ? (
-              <Image src={project.image} alt={`${localized.title} website`} fill sizes="100vw" className="object-cover object-top" />
-            ) : (
-              <BotPreview language={language} />
-            )}
-          </div>
-        </section>
+        <ProjectVisualStory project={project} language={language} />
 
         <section className="mx-auto grid max-w-335 border-x border-b border-border lg:grid-cols-2">
           <div className="border-b border-border px-6 py-14 sm:px-10 lg:border-r lg:border-b-0 lg:px-18 lg:py-20">
@@ -114,28 +106,6 @@ function CaseBlock({ number, title, text }: { number: string; title: string; tex
     <div className="grid gap-4 border-b border-border py-10 first:pt-0 last:border-b-0 last:pb-0 sm:grid-cols-[4rem_1fr]">
       <span className="text-xs text-muted-foreground">{number}</span>
       <div><h2 className="text-2xl font-medium">{title}</h2><p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">{text}</p></div>
-    </div>
-  )
-}
-
-function BotPreview({ language }: { language: 'ru' | 'en' }) {
-  const copy = language === 'ru'
-    ? { title: 'Личный маркетолог', hello: 'Привет! С чего начнём?', user: 'Хочу разобрать свой бизнес', answer: 'Отлично. Я задам несколько вопросов и подготовлю персональный разбор.' }
-    : { title: 'Personal Marketer', hello: 'Hi! Where should we begin?', user: 'I want to analyze my business', answer: 'Great. I will ask a few questions and prepare a personalized report.' }
-
-  return (
-    <div className="absolute inset-0 flex items-center justify-center bg-[#d7cee5] p-6 sm:p-12">
-      <div className="w-full max-w-2xl overflow-hidden rounded-3xl border border-foreground/15 bg-background shadow-2xl">
-        <div className="flex items-center gap-3 border-b border-border px-5 py-4">
-          <div className="flex size-10 items-center justify-center rounded-full bg-foreground text-xs font-medium text-background">SB</div>
-          <div><p className="font-medium">{copy.title}</p><p className="text-xs text-muted-foreground">Telegram · VK</p></div>
-        </div>
-        <div className="space-y-4 p-5 text-sm sm:p-8">
-          <p className="max-w-[75%] rounded-2xl rounded-bl-sm bg-muted px-4 py-3">{copy.hello}</p>
-          <p className="ml-auto max-w-[75%] rounded-2xl rounded-br-sm bg-foreground px-4 py-3 text-background">{copy.user}</p>
-          <p className="max-w-[82%] rounded-2xl rounded-bl-sm bg-muted px-4 py-3 leading-relaxed">{copy.answer}</p>
-        </div>
-      </div>
     </div>
   )
 }

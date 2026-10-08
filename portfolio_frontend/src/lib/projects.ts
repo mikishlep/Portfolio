@@ -15,7 +15,7 @@ export type PortfolioProject = {
   approach: string
   highlights: string[]
   stack: string[]
-  image?: string
+  images?: string[]
   en: {
     title: string
     subtitle: string
@@ -40,14 +40,14 @@ export const projects: PortfolioProject[] = [
     displayUrl: 'cito-nt.ru',
     tags: ['development', 'medical'],
     accent: '#c7ddd5',
-    role: 'Web development',
-    type: 'Corporate website',
+    role: 'Веб-разработка',
+    type: 'Корпоративный сайт',
     overview: 'Информационный сайт медицинского центра в Нижнем Тагиле. Он объединяет услуги, анализы, специалистов, цены и обязательную правовую информацию в одной понятной структуре.',
     challenge: 'Для медицинского сайта особенно важны спокойная визуальная подача, быстрый доступ к нужной услуге и доверие к информации. Большой объём материалов должен оставаться простым для навигации.',
     approach: 'Контент разделён по понятным пользовательским сценариям: выбрать услугу, найти специалиста, уточнить цену или контакты. Интерфейс собран с акцентом на читаемость и доступность ключевых действий.',
     highlights: ['Каталог услуг и анализов', 'Страницы специалистов', 'Цены и правовые документы', 'Контакты и запись на приём'],
     stack: ['React', 'TypeScript', 'Strapi', 'REST API'],
-    image: '/projects/cito.png',
+    images: ['/projects/cito-home.png', '/projects/cito-legal.png', '/projects/cito-prices.png'],
     en: {
       title: 'CITO',
       subtitle: 'Medical center',
@@ -70,14 +70,14 @@ export const projects: PortfolioProject[] = [
     displayUrl: 'mirdverey-nt.ru',
     tags: ['development', 'catalog'],
     accent: '#dfd1c5',
-    role: 'Web development',
-    type: 'Product catalog',
+    role: 'Веб-разработка',
+    type: 'Каталог товаров',
     overview: 'Каталог для магазина входных и межкомнатных дверей. Сайт помогает познакомиться с ассортиментом и быстро перейти от просмотра вариантов к обращению в компанию.',
     challenge: 'Каталог должен показывать разнообразие товаров, но не перегружать посетителя. Основная задача — сделать выбор последовательным и сохранить удобство на мобильных устройствах.',
     approach: 'Структура строится вокруг категорий и карточек товаров. Визуальная иерархия отделяет характеристики от основных действий, а адаптивная сетка сохраняет удобный просмотр на любом экране.',
     highlights: ['Категории продукции', 'Карточки товаров', 'Адаптивный каталог', 'Быстрый переход к контакту'],
     stack: ['React', 'TypeScript', 'Strapi', 'REST API'],
-    image: '/projects/mir-dverey.png',
+    images: ['/projects/doors-home.png', '/projects/doors-catalog.png', '/projects/doors-news.png'],
     en: {
       title: 'World of Doors',
       subtitle: 'Door catalog',
@@ -100,14 +100,14 @@ export const projects: PortfolioProject[] = [
     displayUrl: 'потолковый-мастер.рф',
     tags: ['development', 'services'],
     accent: '#cbd5e2',
-    role: 'Web development',
-    type: 'Service website',
+    role: 'Веб-разработка',
+    type: 'Сайт услуг',
     overview: 'Презентационный сайт мастера по установке натяжных потолков. Знакомит с направлениями работ и помогает посетителю быстро перейти к обсуждению заказа.',
     challenge: 'Услугу нужно объяснить без длинного пути по сайту: показать варианты, снять основные вопросы и привести пользователя к заявке.',
     approach: 'Страница выстроена как последовательный рассказ — от предложения и примеров до преимуществ и контакта. Акценты и повторяющиеся точки действия поддерживают короткий сценарий принятия решения.',
     highlights: ['Презентация услуг', 'Примеры решений', 'Понятный путь к заявке', 'Мобильная версия'],
     stack: ['React', 'TypeScript', 'Landing UI', 'Responsive layout'],
-    image: '/projects/potolkoviy-master.png',
+    images: ['/projects/ceiling-home.png'],
     en: {
       title: 'Ceiling Master',
       subtitle: 'Stretch ceilings',
@@ -130,14 +130,14 @@ export const projects: PortfolioProject[] = [
     displayUrl: 'rabota.glavreklamant.ru',
     tags: ['fullstack', 'platform'],
     accent: '#ddd7bf',
-    role: 'Fullstack development',
-    type: 'Web platform',
+    role: 'Fullstack-разработка',
+    type: 'Веб-платформа',
     overview: 'Веб-сервис, который соединяет заказчиков и исполнителей: вакансии, разовые задачи и поиск подходящей работы собраны в одном продукте.',
     challenge: 'В платформе встречаются два разных сценария — публикация задачи и поиск работы. Интерфейс должен быстро объяснять продукт обеим сторонам и не смешивать их действия.',
     approach: 'Пользовательские потоки разделены уже на старте. Карточки предложений, фильтрация и формы строятся вокруг конкретных задач, а интерфейс сохраняет единый визуальный язык.',
     highlights: ['Два пользовательских сценария', 'Лента предложений', 'Формы публикации', 'Полный цикл разработки'],
     stack: ['Next.js', 'TypeScript', 'Python', 'FastAPI'],
-    image: '/projects/glavreklama-rabota.png',
+    images: ['/projects/glavgrad-home.png', '/projects/glavgrad-articles.png', '/projects/glavgrad-partners.png'],
     en: {
       title: 'Glavgrad',
       subtitle: 'Jobs platform',
@@ -159,8 +159,8 @@ export const projects: PortfolioProject[] = [
     displayUrl: 'Telegram + VK',
     tags: ['bots', 'ai'],
     accent: '#d7cee5',
-    role: 'Bot & backend development',
-    type: 'Cross-platform AI bot',
+    role: 'Разработка бота и backend',
+    type: 'Кроссплатформенный AI-бот',
     overview: 'Единый продукт для Telegram и ВКонтакте, который помогает предпринимателям анализировать бизнес и компетенции, формировать цели и получать персональные материалы.',
     challenge: 'Нужно было перенести сложные многоэтапные маркетинговые сценарии в привычный формат диалога, сохранить контекст пользователя между сессиями и синхронизировать логику двух платформ.',
     approach: 'Основная бизнес-логика и AI-сценарии собраны в общие модули, а Telegram и VK получили собственные адаптеры интерфейса. Redis хранит состояние диалогов, OpenAI обрабатывает аналитические сценарии, а результаты можно собирать в PDF.',
